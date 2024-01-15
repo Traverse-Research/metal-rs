@@ -26,6 +26,7 @@ pub enum MTLAccelerationStructureInstanceDescriptorType {
     Default = 0,
     UserID = 1,
     Motion = 2,
+    Indirect = 3,
 }
 
 #[derive(Clone, Copy, PartialEq, Debug, Default)]
