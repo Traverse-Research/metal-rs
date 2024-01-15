@@ -50,6 +50,17 @@ pub struct MTLAccelerationStructureUserIDInstanceDescriptor {
     pub user_id: u32,
 }
 
+#[derive(Clone, Copy, PartialEq, Debug, Default)]
+#[repr(C)]
+pub struct MTLIndirectAccelerationStructureInstanceDescriptor {
+    pub transformation_matrix: [[f32; 3]; 4],
+    pub options: MTLAccelerationStructureInstanceOptions,
+    pub mask: u32,
+    pub intersection_function_table_offset: u32,
+    pub user_id: u32,
+    pub acceleration_structure_id: u64,
+}
+
 pub enum MTLAccelerationStructureDescriptor {}
 
 foreign_obj_type! {
