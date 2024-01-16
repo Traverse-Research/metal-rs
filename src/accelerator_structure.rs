@@ -333,6 +333,15 @@ impl AccelerationStructureCommandEncoderRef {
             ]
         }
     }
+
+    pub fn use_heaps(&self, heaps: &[&HeapRef]) {
+        unsafe {
+            msg_send![self,
+                useHeaps: heaps.as_ptr()
+                count: heaps.len() as NSUInteger
+            ]
+        }
+    }
 }
 
 pub enum MTLIntersectionFunctionTableDescriptor {}
