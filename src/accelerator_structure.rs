@@ -342,6 +342,14 @@ impl AccelerationStructureCommandEncoderRef {
             ]
         }
     }
+
+    pub fn update_fence(&self, fence: &FenceRef) {
+        unsafe { msg_send![self, updateFence: fence] }
+    }
+
+    pub fn wait_for_fence(&self, fence: &FenceRef) {
+        unsafe { msg_send![self, waitForFence: fence] }
+    }
 }
 
 pub enum MTLIntersectionFunctionTableDescriptor {}
