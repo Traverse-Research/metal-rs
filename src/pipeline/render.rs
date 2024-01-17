@@ -696,6 +696,14 @@ impl RenderPipelineStateRef {
     ) -> IntersectionFunctionTable {
         unsafe { msg_send![self, newIntersectionFunctionTableWithDescriptor: descriptor] }
     }
+
+    /// Only available on (macos(11.0), ios(14.0))
+    pub fn function_handle_with_function(
+        &self,
+        function: &FunctionRef,
+    ) -> Option<&FunctionHandleRef> {
+        unsafe { msg_send![self, functionHandleWithFunction: function] }
+    }
 }
 
 /// See <https://developer.apple.com/documentation/metal/mtlrenderpipelinecolorattachmentdescriptorarray>
