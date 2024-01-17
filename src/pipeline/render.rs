@@ -715,8 +715,12 @@ impl RenderPipelineStateRef {
     pub fn function_handle_with_function(
         &self,
         function: &FunctionRef,
+        stage: MTLRenderStages,
     ) -> Option<&FunctionHandleRef> {
-        unsafe { msg_send![self, functionHandleWithFunction: function] }
+        unsafe {
+            msg_send![self, functionHandleWithFunction: function
+                                                            stage:stage]
+        }
     }
 }
 
