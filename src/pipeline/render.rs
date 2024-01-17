@@ -664,6 +664,16 @@ impl RenderPipelineDescriptorRef {
         unsafe { msg_send![self, setBinaryArchives: ns_array] }
     }
 
+    /// API_AVAILABLE(macos(11.0), ios(14.0));
+    pub fn fragment_linked_functions(&self) -> &LinkedFunctionsRef {
+        unsafe { msg_send![self, fragmentLinkedFunctions] }
+    }
+
+    /// API_AVAILABLE(macos(11.0), ios(14.0));
+    pub fn set_fragment_linked_functions(&self, functions: &LinkedFunctionsRef) {
+        unsafe { msg_send![self, setFragmentLinkedFunctions: functions] }
+    }
+
     pub fn reset(&self) {
         unsafe { msg_send![self, reset] }
     }
