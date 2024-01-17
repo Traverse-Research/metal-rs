@@ -688,6 +688,14 @@ impl RenderPipelineStateRef {
             crate::nsstring_as_str(label)
         }
     }
+
+    /// Only available on (macos(11.0), ios(14.0))
+    pub fn new_intersection_function_table_with_descriptor(
+        &self,
+        descriptor: &IntersectionFunctionTableDescriptorRef,
+    ) -> IntersectionFunctionTable {
+        unsafe { msg_send![self, newIntersectionFunctionTableWithDescriptor: descriptor] }
+    }
 }
 
 /// See <https://developer.apple.com/documentation/metal/mtlrenderpipelinecolorattachmentdescriptorarray>
