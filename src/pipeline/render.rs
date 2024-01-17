@@ -703,8 +703,12 @@ impl RenderPipelineStateRef {
     pub fn new_intersection_function_table_with_descriptor(
         &self,
         descriptor: &IntersectionFunctionTableDescriptorRef,
+        stage: MTLRenderStages,
     ) -> IntersectionFunctionTable {
-        unsafe { msg_send![self, newIntersectionFunctionTableWithDescriptor: descriptor] }
+        unsafe {
+            msg_send![self, newIntersectionFunctionTableWithDescriptor: descriptor
+                                                                            stage:stage]
+        }
     }
 
     /// Only available on (macos(11.0), ios(14.0))
