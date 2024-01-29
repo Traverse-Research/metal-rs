@@ -269,4 +269,8 @@ impl HeapDescriptorRef {
     pub fn heap_type(&self) -> MTLHeapType {
         unsafe { msg_send![self, type] }
     }
+
+    pub fn set_heap_type(&self, type_: MTLHeapType) {
+        unsafe { msg_send![self, setType: type_] }
+    }
 }
