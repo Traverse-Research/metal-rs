@@ -388,6 +388,10 @@ impl IntersectionFunctionTableRef {
     pub fn set_function(&self, function: &FunctionHandleRef, index: NSUInteger) {
         unsafe { msg_send![self, setFunction: function atIndex: index] }
     }
+
+    pub fn gpu_resource_id(&self) -> MTLResourceID {
+        unsafe { msg_send![self, gpuResourceID] }
+    }
 }
 
 // See https://developer.apple.com/documentation/metal/mtlvisiblefunctiontabledescriptor/
@@ -431,5 +435,9 @@ impl VisibleFunctionTableRef {
 
     pub fn set_function(&self, function: &FunctionHandleRef, index: NSUInteger) {
         unsafe { msg_send![self, setFunction: function atIndex: index] }
+    }
+
+    pub fn gpu_resource_id(&self) -> MTLResourceID {
+        unsafe { msg_send![self, gpuResourceID] }
     }
 }
