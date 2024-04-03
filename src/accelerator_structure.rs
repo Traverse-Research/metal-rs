@@ -278,6 +278,73 @@ impl InstanceAccelerationStructureDescriptorRef {
     }
 }
 
+pub enum MTLIndirectInstanceAccelerationStructureDescriptor {}
+
+foreign_obj_type! {
+    type CType = MTLIndirectInstanceAccelerationStructureDescriptor;
+    pub struct IndirectInstanceAccelerationStructureDescriptor;
+    type ParentType = AccelerationStructureDescriptor;
+}
+
+impl IndirectInstanceAccelerationStructureDescriptor {
+    pub fn descriptor() -> Self {
+        unsafe {
+            let class = class!(MTLIndirectInstanceAccelerationStructureDescriptor);
+            msg_send![class, descriptor]
+        }
+    }
+}
+
+impl IndirectInstanceAccelerationStructureDescriptorRef {
+    pub fn set_instance_descriptor_buffer(&self, buffer: &BufferRef) {
+        unsafe { msg_send![self, setInstanceDescriptorBuffer: buffer] }
+    }
+
+    pub fn set_instance_descriptor_buffer_offset(&self, offset: NSUInteger) {
+        unsafe { msg_send![self, setInstanceDescriptorBufferOffset: offset] }
+    }
+
+    pub fn set_instance_descriptor_stride(&self, stride: NSUInteger) {
+        unsafe { msg_send![self, setInstanceDescriptorStride: stride] }
+    }
+
+    pub fn set_max_instance_count(&self, count: NSUInteger) {
+        unsafe { msg_send![self, setMaxInstanceCount: count] }
+    }
+
+    pub fn set_instance_count_buffer(&self, buffer: &BufferRef) {
+        unsafe { msg_send![self, setInstanceCountBuffer: buffer] }
+    }
+
+    pub fn set_instance_count_buffer_offset(&self, offset: NSUInteger) {
+        unsafe { msg_send![self, setInstanceCountBufferOffset: offset] }
+    }
+
+    pub fn set_instance_descriptor_type(&self, ty: MTLAccelerationStructureInstanceDescriptorType) {
+        unsafe { msg_send![self, setInstanceDescriptorType: ty] }
+    }
+
+    pub fn set_motion_transform_buffer(&self, buffer: &BufferRef) {
+        unsafe { msg_send![self, setMotionTransformBuffer: buffer] }
+    }
+
+    pub fn set_motion_transform_buffer_offset(&self, offset: NSUInteger) {
+        unsafe { msg_send![self, setMotionTransformBufferOffset: offset] }
+    }
+
+    pub fn set_max_motion_transform_count(&self, count: NSUInteger) {
+        unsafe { msg_send![self, setMaxMotionTransformCount: count] }
+    }
+
+    pub fn set_motion_transform_count_buffer(&self, buffer: &BufferRef) {
+        unsafe { msg_send![self, setMotionTransformCountBuffer: buffer] }
+    }
+
+    pub fn set_motion_transform_count_buffer_offset(&self, offset: NSUInteger) {
+        unsafe { msg_send![self, setMotionTransformCountBufferOffset: offset] }
+    }
+}
+
 pub enum MTLAccelerationStructureCommandEncoder {}
 
 foreign_obj_type! {
