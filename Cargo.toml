@@ -11,6 +11,7 @@ keywords = ["metal", "graphics", "bindings"]
 license = "MIT OR Apache-2.0"
 edition = "2021"
 exclude = ["guide/**/*", "examples/texture/**/*", "tests/**/*", "Cargo.lock", "target/**/*"]
+publish = ["traverse-pub"]
 
 [package.metadata.docs.rs]
 default-target = "x86_64-apple-darwin"
