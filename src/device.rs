@@ -2049,6 +2049,14 @@ impl DeviceRef {
         unsafe { msg_send![self, heapBufferSizeAndAlignWithLength: length options: options] }
     }
 
+    /// Only available on macos(13.0), ios(16.0)
+    pub fn heap_acceleration_structure_size_and_align_with_size(
+        &self,
+        size: NSUInteger,
+    ) -> MTLSizeAndAlign {
+        unsafe { msg_send![self, heapAccelerationStructureSizeAndAlignWithSize: size] }
+    }
+
     pub fn heap_texture_size_and_align(
         &self,
         descriptor: &TextureDescriptorRef,
