@@ -536,6 +536,19 @@ impl MetalLayerRef {
         }
     }
 
+    pub fn edr_metadata(&self) -> Option<&EDRMetadataRef> {
+        unsafe { msg_send![self, edrMetadata] }
+    }
+
+    pub fn set_edr_metadata(&self, edr_metadata: Option<&EDRMetadataRef>) {
+        unsafe {
+            msg_send![
+                self,
+                setEdrMetadata: edr_metadata
+            ]
+        }
+    }
+
     pub fn color_space(&self) -> Option<&CGColorSpaceRef> {
         unsafe { msg_send!(self, colorspace) }
     }
@@ -543,6 +556,15 @@ impl MetalLayerRef {
     pub fn set_color_space(&self, color_space: Option<&CGColorSpaceRef>) {
         unsafe { msg_send![self, setColorspace: color_space] }
     }
+}
+
+// TODO: Move into cocoa::quartzcore
+pub enum CAEDRMetadata {}
+foreign_obj_type! {
+    type CType = CAEDRMetadata;
+    pub struct EDRMetadata;
+    // type ParentType = Drawable;
+    type ParentType = NsObject;
 }
 
 mod accelerator_structure;
